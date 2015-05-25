@@ -836,9 +836,20 @@ int64 GetProofOfWorkReward(uint256 hashPrevBlock)
 }
 
 int64 GetProofOfStakeRewardYear(int nHeight) {
-	
-    return 1 * CENT;
+static int64 nBaseCoinYear = 1 * CENT;
+static int64 nMultiplier = 100;
+static int64 nReward = 4;
+if (nHeight < 140000) {
+	return nBaseCoinYear;
+	} else {
+		if (nHeight < 164000) {
+		nReward = nMultiplier;
+	} else {
+		nReward = ((nHeight % 6) + 3);
     }
+    return nReward * CENT;
+    }
+ }
 
 // VARY: miner's coin stake is rewarded based on coin age spent (coin-days)
 int64 GetProofOfStakeReward(int64 nCoinAge, int nHeight)
