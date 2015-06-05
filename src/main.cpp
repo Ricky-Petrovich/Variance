@@ -839,7 +839,7 @@ int64 GetProofOfStakeRewardYear(int nHeight) {
 static int64 nBaseCoinYear = 1 * CENT;
 static int64 nMultiplier = 100;
 static int64 nReward = 4;
-if (nHeight < 140000) {
+if (nHeight < 120000) {
 	return nBaseCoinYear;
 	} else {
 		if (nHeight < 164000) {
